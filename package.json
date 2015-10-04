@@ -1,0 +1,45 @@
+{
+  "name": "taskana",
+  "productName": "Taskana",
+  "version": "1.0.0",
+  "description": "Application wrapper for Asana web application",
+  "license": "MIT",
+  "repository": "user/repo",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "electronVersion": "0.33.3",
+  "scripts": {
+    "test": "xo",
+    "start": "electron .",
+    "build": "electron-packager . Taskana --out=dist --overwrite --ignore='^/dist$' --icon=media/Taskana.icns --asar --platform=darwin --arch=all --version=$npm_package_electronVersion"
+  },
+  "files": [
+    "index.js",
+    "index.html",
+    "index.css"
+  ],
+  "keywords": [
+    "electron-app"
+  ],
+  "dependencies": {
+    "electron-debug": "^0.2.1"
+  },
+  "devDependencies": {
+    "electron-packager": "^5.0.0",
+    "electron-prebuilt": "^0.33.3",
+    "xo": "^0.9.0"
+  },
+  "xo": {
+    "esnext": true,
+    "envs": [
+      "node",
+      "browser"
+    ]
+  }
+}
