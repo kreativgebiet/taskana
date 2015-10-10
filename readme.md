@@ -2,6 +2,7 @@
 
 > Application wrapper for Asana web application
 
+![](https://raw.githubusercontent.com/kreativgebiet/taskana/master/media/screenshot.png)
 
 ## Contributing
 
