@@ -6,9 +6,9 @@
   "license": "MIT",
   "repository": "user/repo",
   "author": {
-    "name": "",
-    "email": "",
-    "url": ""
+    "name": "Dominik Schmidt",
+    "email": "nick@kreativgebiet.com",
+    "url": "http://kreativgebiet.com/"
   },
   "engines": {
     "node": ">=4"
