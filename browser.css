@@ -7,27 +7,29 @@ body {
 	-webkit-app-region: drag;
 }
 
-.remix-topbar .omnibutton-button,
-.remix-topbar .topbar-notificationsButton,
-.remix-topbar .topbar-navButton,
-.remix-topbar .typeahead,
-.remix-topbar .topbar-settingsMenuButton,
-.remix-topbar .topbar-myTasksButton {
+.remix-topbar {
 	-webkit-app-region: no-drag;
 }
 
+
+.topbarContingentUpgradeButton-button,
 .navigationDockTeamView-inviteAdTop,
 .topbarSettingsMenu-upgrade,
+.TopbarSettingsMenu-upgrade,
 .reskinOptOutItem {
 	display: none !important;
 }
 
-.remix-topbar .topbarHelpMenuButton {
+.SidebarHeader-asanaLogo {
+	background: none !important;
+}
+
+.remix-topbar .TopbarHelpMenuButton {
 	opacity: 0;
 	pointer-events: none;
 }
 
-.react-mount-node .topbar-navButton {
+.Topbar-navButton {
 	border-left: 1px solid #EFF0F1;
 	margin-left: 78px;
 }
