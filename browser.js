@@ -3,7 +3,7 @@ const ipc = require('ipc');
 // ipc.sendSync('change-menu', 'test');
 
 ipc.on('show-account-settings', () => {
-	click(document.querySelector('.topbar-settingsMenuButton'));
+	click(document.querySelector('.Topbar-settingsMenuButton'));
 	var aTags = document.querySelectorAll('.menuItem-button');
 
 	// Hack to find profile settings
@@ -16,61 +16,53 @@ ipc.on('show-account-settings', () => {
 });
 
 ipc.on('show-workspace-settings', () => {
-	click(document.querySelector('.topbar-settingsMenuButton'));
-	click(document.querySelector('.topbarSettingsMenu-domainSettings'));
+	click(document.querySelector('.Topbar-settingsMenuButton'));
+	click(document.querySelector('.TopbarSettingsMenu-domainSettings'));
 });
 
 ipc.on('new-task', () => {
-	click(document.querySelector('.topbar .omnibutton-button'));
-	click(document.querySelector('.omnibutton-addTask'));
+	click(document.querySelector('.GridHeader-addTaskButton'));
+});
+
+ipc.on('new-section', () => {
+	click(document.querySelector('.GridHeader-addSectionButton'));
 });
 
 ipc.on('new-project', () => {
-	click(document.querySelector('.topbar .omnibutton-button'));
+	click(document.querySelector('.Topbar-navButton'));
 	click(document.querySelector('.omnibutton-addProject'));
 });
 
-ipc.on('new-conversation', () => {
-	click(document.querySelector('.topbar .omnibutton-button'));
-	click(document.querySelector('.omnibutton-addConversation'));
-})
-
 // Team
 ipc.on('team-invite', () => {
-	click(document.querySelector('.topbar .omnibutton-button'));
+	click(document.querySelector('.Topbar-navButton'));
 	click(document.querySelector('.omnibutton-invite'));
 });
 
-ipc.on('team-conversations', () => {
-	click(document.querySelector('.topbar-navButton'));
-	click(document.querySelector('.team .team-page-link'));
-	click(document.querySelector('.navigationDockView-closeButton'));
-});
-
 ipc.on('team-calendar', () => {
-	click(document.querySelector('.topbar-navButton'));
+	click(document.querySelector('.Topbar-navButton'));
 	click(document.querySelector('.team .team-calendar-link'));
 	click(document.querySelector('.navigationDockView-closeButton'));
 });
 
 ipc.on('team-show', () => {
-	click(document.querySelector('.topbar-settingsMenuButton'));
-	click(document.querySelector('.topbarSettingsMenu-domainSettings'));
+	click(document.querySelector('.Topbar-settingsMenuButton'));
+	click(document.querySelector('.TopbarSettingsMenu-domainSettings'));
 	click(document.querySelector('.tab-view .members.tag a'));
 });
 
 ipc.on('my-dashboard', () => {
-	click(document.querySelector('.topbar-navButton'));
+	click(document.querySelector('.Topbar-navButton'));
 	click(document.querySelector('.my-dashboard'));
 	click(document.querySelector('.navigationDockView-closeButton'));
 });
 
 ipc.on('my-tasks', () => {
-	click(document.querySelector('.topbar-myTasksButton'));
+	click(document.querySelector('.Topbar-myTasksButton'));
 });
 
 ipc.on('my-inbox', () => {
-	click(document.querySelector('.topbar-notificationsButton'));
+	click(document.querySelector('.Topbar-notificationsButton'));
 });
 
 ipc.on('toggle-list', () => {
