@@ -1,17 +1,19 @@
 'use strict';
 
-const {
-	app,
-	BrowserWindow,
-	Menu,
-	ipcMain,
-} = require('electron');
-
+const { app, BrowserWindow, Menu, ipcMain } = require('electron');
+const { autoUpdater } = require('electron-updater');
+const __DEV__ = require('electron-is-dev');
 const path          = require('path');
 const menu          = require('./menu');
 const fs            = require('fs');
 
 require('electron-debug')();
+
+if (!isDev && process.platform !== 'linux') {
+	autoUpdater.logger = log;
+	autoUpdater.logger.transports.file.level = 'info';
+	autoUpdater.checkForUpdates();
+}
 
 let mainWindow;
 let page;
@@ -27,7 +29,7 @@ function createMainWindow() {
 		width: 1000,
 		height: 600,
 		show: false,
-		icon: path.join(__dirname, 'media', 'Taskana.icns'),
+		icon: path.join(__dirname, 'build', 'icon.icns'),
 		minWidth: 800,
 		minHeight: 600,
 		titleBarStyle: 'hidden-inset',

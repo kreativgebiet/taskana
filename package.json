@@ -3,43 +3,53 @@
   "productName": "Taskana",
   "version": "0.1.0",
   "description": "Application wrapper for Asana web application",
-  "license": "MIT",
-  "repository": "user/repo",
-  "author": {
-    "name": "Dominik Schmidt",
-    "email": "nick@kreativgebiet.com",
-    "url": "http://kreativgebiet.com/"
-  },
-  "engines": {
-    "node": ">=4"
-  },
   "electronVersion": "0.33.3",
   "scripts": {
-    "test": "xo",
     "start": "electron .",
-    "build": "electron-packager . Taskana --out=dist --overwrite --ignore='^/dist$' --icon=media/Taskana.icns --asar --platform=darwin --arch=all --version=$npm_package_electronVersion"
+    "pack": "build --dir",
+    "dist": "build"
   },
   "files": [
     "index.js",
     "index.html",
     "index.css"
   ],
-  "keywords": [
-    "electron-app"
-  ],
   "dependencies": {
-    "electron-debug": "^1.1.0"
+    "electron-debug": "^1.1.0",
+    "electron-is-dev": "^0.1.2",
+    "electron-updater": "^2.3.1"
   },
   "devDependencies": {
+    "electron-builder": "^19.5.1",
     "electron-packager": "^8.7.1",
-    "electron-prebuilt": "^1.4.13",
-    "xo": "^0.9.0"
+    "electron-prebuilt": "^1.4.13"
   },
-  "xo": {
-    "esnext": true,
-    "envs": [
-      "node",
-      "browser"
-    ]
+  "build": {
+    "files": [
+      "**/*"
+    ],
+    "appId": "com.kreativgebiet.taskana",
+    "mac": {
+      "category": "public.app-category.social-networking",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "dmg": {
+      "iconSize": 160,
+      "contents": [
+        {
+          "x": 180,
+          "y": 170
+        },
+        {
+          "x": 480,
+          "y": 170,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
   }
 }
