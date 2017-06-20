@@ -1,14 +1,16 @@
 'use strict';
 
-const app           = require('app');
-const BrowserWindow = require('browser-window');
-const Menu          = require('menu');
-const ipc           = require('ipc');
+const {
+	app,
+	BrowserWindow,
+	Menu,
+	ipcMain,
+} = require('electron');
+
 const path          = require('path');
 const menu          = require('./menu');
 const fs            = require('fs');
 
-require('crash-reporter').start();
 require('electron-debug')();
 
 let mainWindow;
@@ -21,22 +23,24 @@ function onClosed() {
 
 function createMainWindow() {
 	const win = new BrowserWindow({
-		'width': 1000,
-		'height': 600,
-		'show': false,
-		'icon': path.join(__dirname, 'media', 'Taskana.icns'),
-		'min-width': 1000,
-		'min-height': 400,
-		'node-integration': true,
-		'title-bar-style': 'hidden-inset',
-		'web-preferences': {
-			'preload': path.join(__dirname, 'browser.js'),
-			'plugins': true
+		title: app.getName(),
+		width: 1000,
+		height: 600,
+		show: false,
+		icon: path.join(__dirname, 'media', 'Taskana.icns'),
+		minWidth: 800,
+		minHeight: 600,
+		titleBarStyle: 'hidden-inset',
+		maximizable: false,
+		fullscreenable: false,
+		webPreferences: {
+			nodeIntegration: true,
+			preload: path.join(__dirname, 'browser.js'),
+			plugins: true
 		}
 	});
 
-	// win.loadUrl(`file://${__dirname}/index.html`);
-	win.loadUrl('https://app.asana.com/');
+	win.loadURL('https://app.asana.com/');
 	win.on('closed', onClosed);
 
 	return win;

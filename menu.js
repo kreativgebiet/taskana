@@ -1,8 +1,7 @@
-const app = require('app');
-const Menu = require('menu');
-const BrowserWindow = require('browser-window');
+
+const { app, Menu, BrowserWindow, shell } = require('electron');
+
 const appName = app.getName();
-const shell = require('shell');
 
 function sendAction(action) {
 	const win = BrowserWindow.getAllWindows()[0];

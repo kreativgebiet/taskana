@@ -7,7 +7,10 @@ body {
 	-webkit-app-region: drag;
 }
 
-.remix-topbar {
+.Topbar .NavigationLink,
+.Topbar .Topbar-settingsMenuButton,
+.Topbar .topbarContingentUpgradeButton-button,
+.Topbar .omnibutton {
 	-webkit-app-region: no-drag;
 }
 
