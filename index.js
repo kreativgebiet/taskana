@@ -6,6 +6,7 @@ const __DEV__ = require('electron-is-dev');
 const log = require('electron-log');
 const path = require('path');
 const menu = require('./menu');
+const config = require('./config');
 const fs = require('fs');
 
 const notificationIndicator = '●';
@@ -58,6 +59,7 @@ function createMainWindow() {
 		icon: path.join(__dirname, 'build', 'icon.icns'),
 		minWidth: 800,
 		minHeight: 600,
+		vibrancy: 'light',
 		titleBarStyle: 'hidden-inset',
 		maximizable: false,
 		fullscreenable: false,
@@ -89,6 +91,14 @@ function createMainWindow() {
 
 	return win;
 }
+
+ipcMain.on('set-vibrancy', () => {
+	if (config.get('vibrancy')) {
+		mainWindow.setVibrancy('light');
+	} else {
+		mainWindow.setVibrancy(null);
+	}
+});
 
 app.on('activate', () => {
 	mainWindow.show();

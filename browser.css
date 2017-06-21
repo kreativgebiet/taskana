@@ -3,8 +3,18 @@ body {
 	-webkit-user-select: none;
 }
 
+.vibrancy html,
+.vibrancy body,
+.vibrancy .react-app-node {
+	background: none !important;
+}
+
 .remix-topbar {
 	min-width: 600px !important;
+}
+
+.vibrancy .Topbar {
+	background: rgba(255,255,255,.8) !important;
 }
 
 .remix-topbar, #loading_screen {
@@ -23,7 +33,8 @@ body {
 .navigationDockTeamView-inviteAdTop,
 .topbarSettingsMenu-upgrade,
 .TopbarSettingsMenu-upgrade,
-.reskinOptOutItem {
+.reskinOptOutItem,
+#bg_pattern {
 	display: none !important;
 }
 

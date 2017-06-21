@@ -25,6 +25,15 @@ const template = [{
 		label: 'Workspace Settings',
 		click: () => sendAction('show-workspace-settings'),
 	}, {
+		type: 'separator',
+	}, {
+		label: 'Toggle Vibrancy',
+		click: () => {
+			sendAction('toggle-vibrancy');
+		}
+	}, {
+		type: 'separator',
+	}, {
 		label: 'Check for updates',
 		click() {
 			autoUpdater.checkForUpdates();
