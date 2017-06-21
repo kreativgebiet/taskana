@@ -22,9 +22,7 @@
     "electron-packager": "^8.7.1"
   },
   "build": {
-    "files": [
-      "**/*"
-    ],
+    "files": ["**/*"],
     "appId": "com.kreativgebiet.taskana",
     "publish": [
       {

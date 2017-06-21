@@ -14,7 +14,7 @@ body {
 }
 
 .vibrancy .Topbar {
-	background: rgba(255,255,255,.8) !important;
+	background: linear-gradient(to bottom, rgba(255,255,255,.8), rgba(255,255,255,.7)) !important;
 }
 
 .remix-topbar, #loading_screen {

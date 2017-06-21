@@ -177,7 +177,7 @@ const template = [{
 	}, {
 		label: `${appName} Website...`,
 		click() {
-			shell.openExternal('https://github.com/iduuck/taskana');
+			shell.openExternal('https://github.com/kreativgebiet/taskana');
 		}
 	}, {
 		label: 'Report an Issue...',
@@ -188,7 +188,7 @@ const template = [{
 ${app.getName()} ${app.getVersion()}
 ${process.platform} ${process.arch} ${os.release()}`;
 
-			shell.openExternal(`https://github.com/iduuck/taskana/issues/new?body=${encodeURIComponent(body)}`);
+			shell.openExternal(`https://github.com/kreativgebiet/taskana/issues/new?body=${encodeURIComponent(body)}`);
 		}
 	}]
 }];
