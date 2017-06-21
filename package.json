@@ -1,7 +1,7 @@
 {
   "name": "taskana",
   "productName": "Taskana",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Application wrapper for Asana web application",
   "author": "Nick Schmidt <nick@kreativgebiet.com>",
   "scripts": {
@@ -25,11 +25,13 @@
       "**/*"
     ],
     "appId": "com.kreativgebiet.taskana",
-    "publish": [{
-      "provider": "github",
-      "owner": "kreativgebiet",
-      "repo": "taskana"
-    }],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "kreativgebiet",
+        "repo": "taskana"
+      }
+    ],
     "mac": {
       "category": "public.app-category.social-networking",
       "target": [
