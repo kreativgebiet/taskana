@@ -3,9 +3,10 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const __DEV__ = require('electron-is-dev');
-const path          = require('path');
-const menu          = require('./menu');
-const fs            = require('fs');
+const log = require('electron-log');
+const path = require('path');
+const menu = require('./menu');
+const fs = require('fs');
 
 const notificationIndicator = '●';
 
