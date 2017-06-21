@@ -7,20 +7,39 @@ const path          = require('path');
 const menu          = require('./menu');
 const fs            = require('fs');
 
+const notificationIndicator = '●';
+
 require('electron-debug')();
 
-if (!isDev && process.platform !== 'linux') {
+if (!__DEV__ && process.platform !== 'linux') {
 	autoUpdater.logger = log;
 	autoUpdater.logger.transports.file.level = 'info';
 	autoUpdater.checkForUpdates();
 }
 
+let isQuitting = false;
 let mainWindow;
 let page;
 
-function onClosed() {
-	mainWindow = null;
-	page = null;
+const isRunning = app.makeSingleInstance(() => {
+	if (mainWindow) {
+		if (mainWindow.isMinimized()) mainWindow.restore();
+		mainWindow.show();
+	}
+});
+
+if (isRunning) {
+	app.quit();
+}
+
+function updateBadgeInfo(title) {
+	if (process.platform !== 'darwin' && process.platform !== 'linux') return;
+
+	if (title.startsWith(notificationIndicator)) {
+		app.dock.setBadge(notificationIndicator);
+	} else {
+		app.dock.setBadge('');
+	}
 }
 
 function createMainWindow() {
@@ -43,22 +62,33 @@ function createMainWindow() {
 	});
 
 	win.loadURL('https://app.asana.com/');
-	win.on('closed', onClosed);
+
+	win.on('close', e => {
+		if (!isQuitting) {
+			e.preventDefault();
+
+			if (process.platform === 'darwin') {
+				app.hide();
+			} else {
+				win.hide();
+			}
+		}
+	});
+
+	win.on('page-title-updated', (e, title) => {
+		e.preventDefault();
+		updateBadgeInfo(title);
+	});
 
 	return win;
 }
 
-app.on('window-all-closed', () => {
-	if (process.platform !== 'darwin') {
-		app.quit();
-	}
+app.on('activate', () => {
+	mainWindow.show();
 });
 
-app.on('activate-with-no-open-windows', () => {
-	if (!mainWindow) {
-		mainWindow = createMainWindow();
-		page = mainWindow.webContents;
-	}
+app.on('before-quit', () => {
+	isQuitting = true;
 });
 
 app.on('ready', () => {

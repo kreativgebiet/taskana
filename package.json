@@ -3,7 +3,6 @@
   "productName": "Taskana",
   "version": "1.0.0",
   "description": "Application wrapper for Asana web application",
-  "electronVersion": "0.33.3",
   "scripts": {
     "start": "electron .",
     "pack": "build --dir",
