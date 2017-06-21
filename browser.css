@@ -3,6 +3,10 @@ body {
 	-webkit-user-select: none;
 }
 
+.remix-topbar {
+	min-width: 600px !important;
+}
+
 .remix-topbar, #loading_screen {
 	-webkit-app-region: drag;
 }
