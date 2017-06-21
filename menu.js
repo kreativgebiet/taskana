@@ -1,11 +1,12 @@
 
 const { app, Menu, BrowserWindow, shell } = require('electron');
+const { autoUpdater } = require('electron-updater');
 
 const appName = app.getName();
 
 function sendAction(action) {
-	const win = BrowserWindow.getAllWindows()[0];
-	win.restore();
+	const [win] = BrowserWindow.getAllWindows();
+	if (process.platform === 'darwin') win.restore();
 	win.webContents.send(action);
 }
 
@@ -19,13 +20,14 @@ const template = [{
 	}, {
 		label: 'Account Settings...',
 		accelerator: 'Command+,',
-		click() {
-			sendAction('show-account-settings');
-		}
+		click: () => sendAction('show-account-settings'),
 	}, {
 		label: 'Workspace Settings',
+		click: () => sendAction('show-workspace-settings'),
+	}, {
+		label: 'Check for updates',
 		click() {
-			sendAction('show-workspace-settings');
+			autoUpdater.checkForUpdates();
 		}
 	}, {
 		type: 'separator'
@@ -60,74 +62,23 @@ const template = [{
 	submenu: [{
 		label: 'New Task',
 		accelerator: 'Command+N',
-		click() {
-			sendAction('new-task');
-		}
+		click: () => sendAction('new-task'),
+	}, {
+		label: 'New Section',
+		accelerator: 'Command+Shift+N',
+		click: () => sendAction('new-section'),
 	}]
 }, {
-	label: 'Projects',
+	label: 'View',
 	submenu: [{
-		label: 'New Project',
-		click() {
-			sendAction('new-project');
-		}
-	}]
-}, {
-	label: 'Team',
-	submenu: [{
-		label: 'Create New...',
-		submenu: [{
-			label: 'Task',
-			click() {
-				sendAction('new-task');
-			}
-		}, {
-			label: 'Conversation',
-			click() {
-				sendAction('new-conversation');
-			}
-		}, {
-			label: 'Project',
-			click() {
-				sendAction('new-project');
-			}
-		}, {
-			label: 'Invite',
-			click() {
-				sendAction('team-invite');
-			}
-		}]
+		label: 'My Tasks',
+		click: () => sendAction('my-tasks'),
 	}, {
-		label: 'Invite new Member...',
-		click() {
-			sendAction('team-invite');
-		}
+		label: 'My Dashboard',
+		click: () => sendAction('my-dashboard'),
 	}, {
-		type: 'separator'
-	}, {
-		label: 'Team Conversations',
-		click() {
-			sendAction('team-conversations');
-		}
-	}, {
-		label: 'Team Calendar',
-		click() {
-			sendAction('team-calendar');
-		}
-	}, {
-		label: 'Team Members',
-		click() {
-			sendAction('team-show');
-		}
-	}]
-}, {
-	label: 'Find',
-	submenu: [{
-		label: 'Find Tasks...',
-		accelerator: 'Command+F',
-		click() {
-			sendAction('search');
-		}
+		label: 'My Inbox',
+		click: () => sendAction('my-inbox'),
 	}]
 }, {
 	label: 'Edit',
@@ -157,44 +108,6 @@ const template = [{
 		label: 'Select All',
 		accelerator: 'CmdOrCtrl+A',
 		role: 'selectall'
-	}]
-}, {
-	label: 'View',
-	submenu: [{
-		label: 'My Dashboard',
-		click() {
-			sendAction('my-dashboard');
-		}
-	}, {
-		label: 'My Tasks',
-		click() {
-			sendAction('my-tasks');
-		}
-	}, {
-		label: 'My Inbox',
-		click() {
-			sendAction('my-inbox');
-		}
-	}, {
-		type: 'separator'
-	}, {
-		label: 'Toggle List View',
-		accelerator: 'Command+Shift+V',
-		click() {
-			sendAction('toggle-list');
-		}
-	}, {
-		label: 'Toggle Calendar View',
-		accelerator: 'Command+Shift+C',
-		click() {
-			sendAction('toggle-calendar');
-		}
-	}, {
-		label: 'Toggle Files View',
-		accelerator: 'Command+Shift+F',
-		click() {
-			sendAction('toggle-files');
-		}
 	}]
 }, {
 	label: 'Window',

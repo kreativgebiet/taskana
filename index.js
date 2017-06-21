@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, BrowserWindow, Menu, ipcMain } = require('electron');
+const { app, BrowserWindow, Menu, ipcMain, crashReporter } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const __DEV__ = require('electron-is-dev');
 const log = require('electron-log');
@@ -11,6 +11,12 @@ const fs = require('fs');
 const notificationIndicator = '●';
 
 require('electron-debug')();
+
+crashReporter.start({
+	companyName: 'Kreativgebiet',
+	submitURL: 'test',
+	uploadToServer: false,
+});
 
 if (!__DEV__ && process.platform !== 'linux') {
 	autoUpdater.logger = log;

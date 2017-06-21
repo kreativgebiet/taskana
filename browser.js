@@ -1,113 +1,88 @@
-const ipc = require('ipc');
 
-// ipc.sendSync('change-menu', 'test');
+const electron = require('electron');
+const settingsMenuSelector = '.Topbar-settingsMenuButton';
 
-ipc.on('show-account-settings', () => {
-	click(document.querySelector('.Topbar-settingsMenuButton'));
-	var aTags = document.querySelectorAll('.menuItem-button');
+const { ipcRenderer } = electron;
+
+function openSidebar() {
+	document.querySelector('.Topbar-navButton').click();
+}
+
+function closeSidebar() {
+	document.querySelector('.SidebarHeader-closeIcon').click();
+}
+
+ipcRenderer.on('show-account-settings', () => {
+	document.querySelector(settingsMenuSelector).click();
+	var aTags = querySelectorAll('.menuItem-button');
 
 	// Hack to find profile settings
 	for (var i = 0; i < aTags.length; i++) {
-		if (aTags[i].firstChild.textContent == 'My Profile Settings') {
+		if (aTags[i].firstChild.textContent == 'My Profile Settings...') {
 			click(aTags[i]);
 			break;
 		}
 	}
 });
 
-ipc.on('show-workspace-settings', () => {
-	click(document.querySelector('.Topbar-settingsMenuButton'));
-	click(document.querySelector('.TopbarSettingsMenu-domainSettings'));
+ipcRenderer.on('show-workspace-settings', () => {
+	document.querySelector('.Topbar-settingsMenuButton').click();
+	document.querySelector('.topbarSettingsMenu-domainSettings').click();
 });
 
-ipc.on('new-task', () => {
-	click(document.querySelector('.GridHeader-addTaskButton'));
+ipcRenderer.on('new-task', () => {
+	document.querySelector('.GridHeader-addTaskButton').click();
 });
 
-ipc.on('new-section', () => {
-	click(document.querySelector('.GridHeader-addSectionButton'));
+ipcRenderer.on('new-section', () => {
+	document.querySelector('.GridHeader-addSectionButton').click();
 });
 
-ipc.on('new-project', () => {
-	click(document.querySelector('.Topbar-navButton'));
-	click(document.querySelector('.omnibutton-addProject'));
+ipcRenderer.on('new-project', () => {
+	openSidebar();
+	document.querySelector('.omnibutton-addProject').click();
 });
 
 // Team
-ipc.on('team-invite', () => {
-	click(document.querySelector('.Topbar-navButton'));
-	click(document.querySelector('.omnibutton-invite'));
+
+ipcRenderer.on('new-team-task', () => {
+	document.querySelector('.omnibutton-button').click();
+	document.querySelector('.omnibutton-addTask').click();
+}
+ipcRenderer.on('new-team-conversation', () => {
+	document.querySelector('.omnibutton-button').click();
+	document.querySelector('.omnibutton-addConversation').click();
+}
+ipcRenderer.on('new-team-project', () => {
+	document.querySelector('.omnibutton-button').click();
+	document.querySelector('.omnibutton-addProject').click();
+}
+
+ipcRenderer.on('team-conversations', () => {
+	openSidebar();
+	document.querySelector('[title="Team Conversations"]').click();
+	closeSidebar();
 });
 
-ipc.on('team-calendar', () => {
-	click(document.querySelector('.Topbar-navButton'));
-	click(document.querySelector('.team .team-calendar-link'));
-	click(document.querySelector('.navigationDockView-closeButton'));
+ipcRenderer.on('team-calendar', () => {
+	openSidebar();
+	document.querySelector('[title="Team Calendar"]').click();
+	closeSidebar();
 });
 
-ipc.on('team-show', () => {
-	click(document.querySelector('.Topbar-settingsMenuButton'));
-	click(document.querySelector('.TopbarSettingsMenu-domainSettings'));
-	click(document.querySelector('.tab-view .members.tag a'));
+ipcRenderer.on('team-show', () => {
+	document.querySelector('.SidebarTeamMembersList-addButton').click();
+	document.querySelector('.SidebarTeamMembersExpandedList-pencilButton').click();
 });
 
-ipc.on('my-dashboard', () => {
-	click(document.querySelector('.Topbar-navButton'));
-	click(document.querySelector('.my-dashboard'));
-	click(document.querySelector('.navigationDockView-closeButton'));
+ipcRenderer.on('my-dashboard', () => {
+	document.querySelector('.Topbar-myDashboardButton').click();
 });
 
-ipc.on('my-tasks', () => {
-	click(document.querySelector('.Topbar-myTasksButton'));
+ipcRenderer.on('my-tasks', () => {
+	document.querySelector('.Topbar-myTasksButton').click();
 });
 
-ipc.on('my-inbox', () => {
-	click(document.querySelector('.Topbar-notificationsButton'));
+ipcRenderer.on('my-inbox', () => {
+	document.querySelector('.Topbar-notificationsButton').click();
 });
-
-ipc.on('toggle-list', () => {
-	click(document.querySelectorAll('.tab-nav-bar .tab-nav a')[0]);
-});
-
-ipc.on('toggle-calendar', () => {
-	click(document.querySelectorAll('.tab-nav-bar .tab-nav a')[1]);
-});
-
-ipc.on('toggle-files', () => {
-	click(document.querySelectorAll('.tab-nav-bar .tab-nav a')[2]);
-});
-
-ipc.on('search', () => {
-	var searchInput = document.getElementById('nav_search_input');
-	var searchBar = document.querySelector('.search-field-wrapper');
-
-	searchBar.style.opacity = 1;
-	searchBar.style.pointerEvents = 'initial';
-	searchInput.focus();
-
-	searchInput.addEventListener('blur', evt => {
-		searchBar.style.opacity = 0;
-		searchBar.style.pointerEvents = 'none';
-	}, true);
-});
-
-
-function click(element) {
-	var event; // The custom event that will be created
-
-  if (document.createEvent) {
-    event = document.createEvent("HTMLEvents");
-    event.initEvent('click', true, true);
-  } else {
-    event = document.createEventObject();
-    event.eventType = 'click';
-  }
-
-  event.eventName = 'click';
-
-  if (document.createEvent) {
-    element.dispatchEvent(event);
-  } else {
-    element.fireEvent("on" + event.eventType, event);
-  }
-};
