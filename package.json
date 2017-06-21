@@ -1,7 +1,7 @@
 {
   "name": "taskana",
   "productName": "Taskana",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Application wrapper for Asana web application",
   "scripts": {
     "start": "electron .",
