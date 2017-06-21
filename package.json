@@ -7,7 +7,7 @@
   "scripts": {
     "start": "electron .",
     "pack": "build --dir",
-    "dist": "build --draft"
+    "release": "build"
   },
   "dependencies": {
     "electron-debug": "^1.1.0",
@@ -25,6 +25,11 @@
       "**/*"
     ],
     "appId": "com.kreativgebiet.taskana",
+    "publish": [{
+      "provider": "github",
+      "owner": "kreativgebiet",
+      "repo": "taskana"
+    }],
     "mac": {
       "category": "public.app-category.social-networking",
       "target": [
