@@ -1,4 +1,3 @@
-'use strict';
 
 const { app, BrowserWindow, Menu, ipcMain, crashReporter } = require('electron');
 const { autoUpdater } = require('electron-updater');
@@ -12,12 +11,6 @@ const fs = require('fs');
 const notificationIndicator = '●';
 
 require('electron-debug')();
-
-crashReporter.start({
-	companyName: 'Kreativgebiet',
-	submitURL: 'test',
-	uploadToServer: false,
-});
 
 if (!__DEV__ && process.platform !== 'linux') {
 	autoUpdater.logger = log;
@@ -70,9 +63,11 @@ function createMainWindow() {
 		}
 	});
 
+	win.setSheetOffset(41);
+
 	win.loadURL('https://app.asana.com/');
 
-	win.on('close', e => {
+	win.on('close', (e) => {
 		if (!isQuitting) {
 			e.preventDefault();
 
@@ -100,13 +95,12 @@ ipcMain.on('set-vibrancy', () => {
 	}
 });
 
-app.on('activate', () => {
-	mainWindow.show();
-});
+ipcMain.on('update-menu', () => {
+	Menu.setApplicationMenu(menu.slice(1));
+})
 
-app.on('before-quit', () => {
-	isQuitting = true;
-});
+app.on('activate', () => mainWindow.show());
+app.on('before-quit', () => isQuitting = true);
 
 app.on('ready', () => {
 	mainWindow = createMainWindow();
