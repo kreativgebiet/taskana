@@ -1,5 +1,5 @@
 
-const { app, BrowserWindow, Menu, ipcMain, crashReporter } = require('electron');
+const { app, BrowserWindow, Menu, ipcMain, crashReporter, shell } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const __DEV__ = require('electron-is-dev');
 const log = require('electron-log');
@@ -109,7 +109,7 @@ app.on('ready', () => {
 	// Open new browser window on external open
 	page.on('new-window', (event, url) => {
 		event.preventDefault();
-		require('shell').openExternal(url);
+		shell.openExternal(url);
 	});
 
 	// Set the menu application menu
