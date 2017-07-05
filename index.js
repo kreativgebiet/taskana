@@ -57,7 +57,7 @@ function createMainWindow() {
 		maximizable: false,
 		fullscreenable: false,
 		webPreferences: {
-			nodeIntegration: true,
+			nodeIntegration: false,
 			preload: path.join(__dirname, 'browser.js'),
 			plugins: true
 		}

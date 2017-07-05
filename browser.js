@@ -3,6 +3,8 @@ const electron = require('electron');
 const config = require('./config');
 const settingsMenuSelector = '.Topbar-settingsMenuButton';
 
+// Host.prototype.ufuThatExceptionHandlerActive = function() {};
+
 const { ipcRenderer } = electron;
 
 function openSidebar() {
