@@ -56,7 +56,7 @@ body {
 	background: none !important;
 }
 
-.search-field-wrapper {
+.TopbarSearch {
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 200ms linear;
