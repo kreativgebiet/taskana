@@ -3,6 +3,11 @@ body {
 	-webkit-user-select: none;
 }
 
+.commentStoryView-content {
+	-webkit-touch-callout: initial;
+	-webkit-user-select: initial;
+}
+
 .vibrancy html,
 .vibrancy body,
 .vibrancy .react-app-node {
