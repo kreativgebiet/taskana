@@ -3,6 +3,10 @@ body {
 	-webkit-user-select: none;
 }
 
+.ModalLayer {
+	top: 71px !important;
+}
+
 .commentStoryView-content {
 	-webkit-touch-callout: initial;
 	-webkit-user-select: initial;
