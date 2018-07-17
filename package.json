@@ -10,16 +10,16 @@
     "release": "build"
   },
   "dependencies": {
-    "electron-debug": "^1.1.0",
-    "electron-is-dev": "^0.1.2",
+    "electron-debug": "^2.0.0",
+    "electron-is-dev": "^0.3.0",
     "electron-log": "^2.2.6",
-    "electron-store": "^1.1.0",
-    "electron-updater": "^2.4.3"
+    "electron-store": "^2.0.0",
+    "electron-updater": "^3.0.1"
   },
   "devDependencies": {
-    "electron": "^1.6.11",
-    "electron-builder": "^19.5.1",
-    "electron-packager": "^8.7.1"
+    "electron": "^2.0.5",
+    "electron-builder": "^20.22.0",
+    "electron-packager": "^12.1.0"
   },
   "build": {
     "files": [
