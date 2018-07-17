@@ -1,5 +1,7 @@
 # Taskana
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kreativgebiet/taskana.svg)](https://greenkeeper.io/)
+
 > Application wrapper for Asana web application
 
 ![](https://raw.githubusercontent.com/kreativgebiet/taskana/master/build/screenshot.png)
