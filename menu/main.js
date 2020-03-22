@@ -11,35 +11,35 @@ module.exports = {
 		label: `About ${appName}`,
 		selector: 'orderFrontStandardAboutPanel:',
 	}, {
-		type: 'separator'
-	}, {
-		label: 'Account Settings...',
-		accelerator: 'Command+,',
-		click: () => sendAction('show-account-settings'),
-	}, {
-		label: 'Workspace Settings',
-		click: () => sendAction('show-workspace-settings'),
-	}, {
-		type: 'separator',
-	}, {
-		label: 'Toggle Vibrancy',
-		type: 'checkbox',
-		checked: config.get('vibrancy'),
-		click: () => sendAction('toggle-vibrancy'),
-	}, {
-		type: 'separator',
-	}, {
-		label: 'Check for updates',
-		click: () => autoUpdater.checkForUpdates(),
-	}, {
-		type: 'separator'
-	}, {
-		label: 'Services',
-		role: 'services',
-		submenu: []
-	}, {
-		type: 'separator'
-	}, {
+	// 	type: 'separator'
+	// }, {
+	// 	label: 'Account Settings...',
+	// 	accelerator: 'Command+,',
+	// 	click: () => sendAction('show-account-settings'),
+	// }, {
+	// 	label: 'Workspace Settings',
+	// 	click: () => sendAction('show-workspace-settings'),
+	// }, {
+	// 	type: 'separator',
+	// }, {
+	// 	label: 'Toggle Vibrancy',
+	// 	type: 'checkbox',
+	// 	checked: config.get('vibrancy'),
+	// 	click: () => sendAction('toggle-vibrancy'),
+	// }, {
+	// 	type: 'separator',
+	// }, {
+	// 	label: 'Check for updates',
+	// 	click: () => autoUpdater.checkForUpdates(),
+	// }, {
+	// 	type: 'separator'
+	// }, {
+	// 	label: 'Services',
+	// 	role: 'services',
+	// 	submenu: []
+	// }, {
+	// 	type: 'separator'
+	// }, {
 		label: `Hide ${appName}`,
 		accelerator: 'Cmd+H',
 		role: 'hide'
