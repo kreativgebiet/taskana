@@ -22,16 +22,18 @@ let isQuitting = false;
 let mainWindow;
 let page;
 
-const isRunning = app.makeSingleInstance(() => {
+const isRunning = app.requestSingleInstanceLock();
+
+if (!isRunning) {
+	app.quit();
+}
+
+app.on('second-instance', () => {
 	if (mainWindow) {
 		if (mainWindow.isMinimized()) mainWindow.restore();
 		mainWindow.show();
 	}
 });
-
-if (isRunning) {
-	app.quit();
-}
 
 function updateBadgeInfo(title) {
 	if (process.platform !== 'darwin' && process.platform !== 'linux') return;
@@ -46,7 +48,7 @@ function updateBadgeInfo(title) {
 function createMainWindow() {
 	const win = new BrowserWindow({
 		title: app.getName(),
-		width: 1000,
+		width: 1200,
 		height: 600,
 		show: false,
 		icon: path.join(__dirname, 'build', 'icon.icns'),
