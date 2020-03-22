@@ -1,5 +1,6 @@
 
-const { shell, app, os } = require('electron');
+const { shell, app } = require('electron');
+const os = require('os');
 
 module.exports = {
 	label: 'Help',
@@ -40,7 +41,8 @@ module.exports = {
 		}
 	}, {
 		label: 'Report an Issue...',
-		click() {
+			click() {
+				console.log(os.release());
 			const body = `
 **Please succinctly describe your issue and steps to reproduce it.**
 -
