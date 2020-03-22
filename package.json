@@ -1,7 +1,7 @@
 {
   "name": "taskana",
   "productName": "Taskana",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "Application wrapper for Asana web application",
   "author": "Nick Schmidt <nick@kreativgebiet.com>",
   "scripts": {
@@ -14,7 +14,7 @@
     "electron-is-dev": "^0.1.2",
     "electron-log": "^2.2.6",
     "electron-store": "^1.1.0",
-    "electron-updater": "^2.4.3"
+    "electron-updater": "^2.18.2"
   },
   "devDependencies": {
     "electron": "^1.6.11",
