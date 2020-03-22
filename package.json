@@ -1,31 +1,62 @@
 {
   "name": "taskana",
   "productName": "Taskana",
-  "version": "1.6.3",
+  "version": "1.7.0",
   "description": "Application wrapper for Asana web application",
+  "keywords": [
+    "macOS",
+    "windows",
+    "linux",
+    "wrapper",
+    "electron",
+    "asana",
+    "tasks"
+  ],
   "author": "Nick Schmidt <nick@kreativgebiet.com>",
+  "contributors": [
+    {
+      "name": "Mountain/\\Ash"
+    },
+    {
+      "name": "Dominik Schmidt"
+    },
+    {
+      "name": "Jonas Schmitt"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kreativgebiet/taskana.git"
+  },
+  "homepage": "https://github.com/kreativgebiet/taskana",
+  "bugs": {
+    "url": "https://github.com/kreativgebiet/taskana/issues"
+  },
+  "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "pack": "build --dir",
-    "release": "build"
+    "pack": "electron-packager .",
+    "build": "electron-builder"
   },
   "dependencies": {
-    "electron-debug": "^1.1.0",
-    "electron-is-dev": "^0.1.2",
-    "electron-log": "^2.2.6",
-    "electron-store": "^1.1.0",
-    "electron-updater": "^2.18.2"
+    "electron-debug": "^3.0.1",
+    "electron-is-dev": "^1.1.0",
+    "electron-log": "^4.1.0",
+    "electron-store": "^5.1.1",
+    "electron-updater": "^4.2.5"
   },
   "devDependencies": {
-    "electron": "^1.6.11",
-    "electron-builder": "^19.5.1",
-    "electron-packager": "^8.7.1"
+    "electron": "8.1.1",
+    "electron-builder": "^22.4.1",
+    "electron-packager": "^14.2.1"
   },
   "build": {
     "files": [
       "**/*"
     ],
-    "appId": "com.kreativgebiet.taskana",
+    "appId": "com.kreativgebiet.${name}",
+    "copyright": "MIT © Kreativgebiet",
+    "productName": "Taskana",
     "publish": [
       {
         "provider": "github",
