@@ -52,16 +52,12 @@ function createMainWindow() {
 		height: 600,
 		show: false,
 		icon: path.join(__dirname, 'build', 'icon.icns'),
-		minWidth: 800,
-		minHeight: 600,
-		vibrancy: 'light',
-		titleBarStyle: 'hidden-inset',
-		maximizable: false,
-		fullscreenable: false,
+		acceptFirstMouse: true,
 		webPreferences: {
 			nodeIntegration: false,
 			preload: path.join(__dirname, 'browser.js'),
-			plugins: true
+			plugins: true,
+			partition: 'persist:asana'
 		}
 	});
 
