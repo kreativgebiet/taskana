@@ -1,7 +1,6 @@
-
 const { app, autoUpdater } = require('electron');
 const sendAction = require('./utils/sendAction');
-const config = require('../config');
+// const config = require('../config');
 
 const appName = app.getName();
 

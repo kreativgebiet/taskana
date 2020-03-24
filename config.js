@@ -1,8 +1,7 @@
+// const Store = require('electron-store');
 
-const Store = require('electron-store');
-
-module.exports = new Store({
-	defaults: {
-		vibrancy: true,
-	},
-});
+// module.exports = new Store({
+// 	defaults: {
+// 		vibrancy: true,
+// 	},
+// });

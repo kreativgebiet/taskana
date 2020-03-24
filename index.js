@@ -1,12 +1,13 @@
-
 const { app, BrowserWindow, Menu, ipcMain, crashReporter, shell } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const __DEV__ = require('electron-is-dev');
 const log = require('electron-log');
 const path = require('path');
 const menu = require('./menu');
-const config = require('./config');
+// const config = require('./config');
 const fs = require('fs');
+const Config = require('electron-config')
+const config = new Config()
 
 const notificationIndicator = '●';
 
@@ -46,7 +47,8 @@ function updateBadgeInfo(title) {
 }
 
 function createMainWindow() {
-	const win = new BrowserWindow({
+
+	let opts = {
 		title: app.getName(),
 		width: 1200,
 		height: 600,
@@ -59,7 +61,10 @@ function createMainWindow() {
 			plugins: true,
 			partition: 'persist:asana'
 		}
-	});
+	};
+	Object.assign(opts, config.get('winBounds'));
+
+	const win = new BrowserWindow(opts);
 
 	win.setSheetOffset(41);
 
@@ -74,6 +79,9 @@ function createMainWindow() {
 			} else {
 				win.hide();
 			}
+		} else {
+			// save window size and position
+			config.set('winBounds', win.getBounds());
 		}
 	});
 
@@ -85,13 +93,13 @@ function createMainWindow() {
 	return win;
 }
 
-ipcMain.on('set-vibrancy', () => {
-	if (config.get('vibrancy')) {
-		mainWindow.setVibrancy('light');
-	} else {
-		mainWindow.setVibrancy(null);
-	}
-});
+// ipcMain.on('set-vibrancy', () => {
+// 	if (config.get('vibrancy')) {
+// 		mainWindow.setVibrancy('light');
+// 	} else {
+// 		mainWindow.setVibrancy(null);
+// 	}
+// });
 
 ipcMain.on('update-menu', () => {
 	Menu.setApplicationMenu(menu.slice(1));

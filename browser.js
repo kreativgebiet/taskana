@@ -1,6 +1,5 @@
-
 const electron = require('electron');
-const config = require('./config');
+// const config = require('./config');
 const settingsMenuSelector = '.Topbar-settingsMenuButton';
 
 // Host.prototype.ufuThatExceptionHandlerActive = function() {};
@@ -15,11 +14,11 @@ function closeSidebar() {
 	document.querySelector('.SidebarHeader-closeIcon').click();
 }
 
-ipcRenderer.on('toggle-vibrancy', () => {
-	console.log('toggle-vibrancy');
-	config.set('vibrancy', !config.get('vibrancy'));
-	updateVibrancy();
-});
+// ipcRenderer.on('toggle-vibrancy', () => {
+// 	console.log('toggle-vibrancy');
+// 	config.set('vibrancy', !config.get('vibrancy'));
+// 	updateVibrancy();
+// });
 
 ipcRenderer.on('show-account-settings', () => {
 	document.querySelector(settingsMenuSelector).click();
@@ -43,7 +42,7 @@ ipcRenderer.on('new-task', () => {
 	document.querySelector('.TopbarPageHeaderGlobalActions-omnibutton').click();
 	setTimeout(function() {
 		document.querySelector('.Omnibutton-addTask').click();
-	}, 30);
+	}, 15);
 });
 
 ipcRenderer.on('new-section', () => {
@@ -101,11 +100,11 @@ ipcRenderer.on('my-inbox', () => {
 	document.querySelector('.Topbar-notificationsButton').click();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-	updateVibrancy();
-});
+// document.addEventListener('DOMContentLoaded', () => {
+// 	updateVibrancy();
+// });
 
-function updateVibrancy() {
-	document.documentElement.classList.toggle('vibrancy', config.get('vibrancy'));
-	ipcRenderer.send('set-vibrancy');
-}
+// function updateVibrancy() {
+// 	document.documentElement.classList.toggle('vibrancy', config.get('vibrancy'));
+// 	ipcRenderer.send('set-vibrancy');
+// }
