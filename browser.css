@@ -1,72 +1,16 @@
-body {
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-}
-
-.ModalLayer {
-	top: 71px !important;
-}
-
-.commentStoryView-content {
-	-webkit-touch-callout: initial;
-	-webkit-user-select: initial;
-}
-
 .vibrancy html,
 .vibrancy body,
 .vibrancy .react-app-node {
 	background: none !important;
 }
 
-.remix-topbar {
-	min-width: 600px !important;
-}
-
-.vibrancy .Topbar {
+.vibrancy .AsanaPageTopbar {
 	background: linear-gradient(to bottom, rgba(255,255,255,.8), rgba(255,255,255,.7)) !important;
 }
 
-.remix-topbar, #loading_screen {
-	-webkit-app-region: drag;
-}
-
-.Topbar .NavigationLink,
-.Topbar .Topbar-settingsMenuButton,
-.Topbar .topbarContingentUpgradeButton-button,
-.Topbar .omnibutton {
-	-webkit-app-region: no-drag;
-}
-
-
-.topbarContingentUpgradeButton-button,
-.navigationDockTeamView-inviteAdTop,
-.topbarSettingsMenu-upgrade,
+.TopbarContingentUpgradeLink, /* Too much "sell" */
 .TopbarSettingsMenu-upgrade,
-.reskinOptOutItem,
-#bg_pattern {
+.TopbarHelpMenuButton-button, /* Most of these are in Taskana's Help menu */
+.FeatureStageIndicator-feedbackLink--withoutType {
 	display: none !important;
-}
-
-.SidebarHeader-asanaLogo {
-	background: none !important;
-}
-
-.remix-topbar .TopbarHelpMenuButton {
-	opacity: 0;
-	pointer-events: none;
-}
-
-.Topbar-navButton {
-	border-left: 1px solid #EFF0F1;
-	margin-left: 78px;
-}
-
-#header.has-reskinLogo {
-	background: none !important;
-}
-
-.TopbarSearch {
-	opacity: 0;
-	pointer-events: none;
-	transition: opacity 200ms linear;
 }

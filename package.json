@@ -1,7 +1,7 @@
 {
   "name": "taskana",
   "productName": "Taskana",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "Application wrapper for Asana web application",
   "keywords": [
     "macOS",
