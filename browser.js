@@ -40,7 +40,10 @@ ipcRenderer.on('show-workspace-settings', () => {
 });
 
 ipcRenderer.on('new-task', () => {
-	document.querySelector('.GridHeader-addTaskButton').click();
+	document.querySelector('.TopbarPageHeaderGlobalActions-omnibutton').click();
+	setTimeout(function() {
+		document.querySelector('.Omnibutton-addTask').click();
+	}, 30);
 });
 
 ipcRenderer.on('new-section', () => {

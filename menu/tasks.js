@@ -7,9 +7,9 @@ module.exports = {
 		label: 'New Task',
 		accelerator: 'Command+N',
 		click: () => sendAction('new-task'),
-	}, {
-		label: 'New Section',
-		accelerator: 'Command+Shift+N',
-		click: () => sendAction('new-section'),
+	// }, {
+	// 	label: 'New Section',
+	// 	accelerator: 'Command+Shift+N',
+	// 	click: () => sendAction('new-section'),
 	}]
 };
