@@ -33,18 +33,18 @@ module.exports = {
 	// }, {
 	// 	type: 'separator'
 	// }, {
-	// 	label: 'Services',
-	// 	role: 'services',
-	// 	submenu: []
-	// }, {
-	// 	type: 'separator'
-	// }, {
+		label: 'Services',
+		role: 'services',
+		submenu: []
+	}, {
+		type: 'separator'
+	}, {
 		label: `Hide ${appName}`,
 		accelerator: 'Cmd+H',
 		role: 'hide'
 	}, {
 		label: 'Hide Others',
-		accelerator: 'Cmd+Shift+H',
+		accelerator: 'Cmd+Option+H',
 		role: 'hideothers'
 	}, {
 		label: 'Show All',
