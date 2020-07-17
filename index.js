@@ -53,7 +53,6 @@ function createMainWindow() {
 		width: 1200,
 		height: 600,
 		show: false,
-		icon: path.join(__dirname, 'build', 'icon.icns'),
 		acceptFirstMouse: true,
 		webPreferences: {
 			nodeIntegration: false,
@@ -105,7 +104,6 @@ ipcMain.on('update-menu', () => {
 	Menu.setApplicationMenu(menu.slice(1));
 })
 
-app.on('activate', () => mainWindow.show());
 app.on('before-quit', () => isQuitting = true);
 
 app.on('ready', () => {
