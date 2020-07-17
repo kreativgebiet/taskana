@@ -1,7 +1,7 @@
 {
   "name": "taskana",
   "productName": "Taskana",
-  "version": "1.8.1",
+  "version": "1.9.0",
   "description": "Application wrapper for Asana web application",
   "keywords": [
     "macOS",
@@ -41,15 +41,15 @@
   },
   "dependencies": {
     "electron-config": "^2.0.0",
-    "electron-debug": "^3.0.1",
-    "electron-is-dev": "^1.1.0",
-    "electron-log": "^4.1.0",
-    "electron-updater": "^4.2.5"
+    "electron-debug": "^3.1.0",
+    "electron-is-dev": "^1.2.0",
+    "electron-log": "^4.2.2",
+    "electron-updater": "^4.3.1"
   },
   "devDependencies": {
-    "electron": "9.0.5",
-    "electron-builder": "^22.4.1",
-    "electron-packager": "^14.2.1"
+    "electron": "^9.1.0",
+    "electron-builder": "^22.7.0",
+    "electron-packager": "^15.0.0"
   },
   "build": {
     "appId": "com.kreativgebiet.${name}",
