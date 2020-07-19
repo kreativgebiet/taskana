@@ -4,7 +4,6 @@ const __DEV__ = require('electron-is-dev');
 const log = require('electron-log');
 const path = require('path');
 const menu = require('./menu');
-// const config = require('./config');
 const fs = require('fs');
 const Config = require('electron-config')
 const config = new Config()
@@ -47,7 +46,6 @@ function updateBadgeInfo(title) {
 }
 
 function createMainWindow() {
-
 	let opts = {
 		title: app.getName(),
 		width: 1200,
@@ -64,8 +62,6 @@ function createMainWindow() {
 	Object.assign(opts, config.get('winBounds'));
 
 	const win = new BrowserWindow(opts);
-
-	win.setSheetOffset(41);
 
 	win.loadURL('https://app.asana.com/');
 
@@ -91,14 +87,6 @@ function createMainWindow() {
 
 	return win;
 }
-
-// ipcMain.on('set-vibrancy', () => {
-// 	if (config.get('vibrancy')) {
-// 		mainWindow.setVibrancy('light');
-// 	} else {
-// 		mainWindow.setVibrancy(null);
-// 	}
-// });
 
 ipcMain.on('update-menu', () => {
 	Menu.setApplicationMenu(menu.slice(1));
