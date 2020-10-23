@@ -8,9 +8,9 @@
 
 https://github.com/mountainash/taskana/releases
 
-## Contributing
+## Development
 
-To contribute clone the repository into a folder on your system and be sure to have Node.js installed.
+Clone the repository into a folder on your system and be sure to have Node.js installed.
 
 Run
 
@@ -38,4 +38,8 @@ Builds the app for OS X, Linux, and Windows, using [electron-builder](https://gi
 
 ## License
 
-MIT © [Kreativgebiet](http://kreativgebiet.com/)
+MIT
+
+## Credits
+
+Originally forked from https://github.com/kreativgebiet/taskana (now archived)
