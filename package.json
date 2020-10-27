@@ -1,7 +1,7 @@
 {
   "name": "taskana",
   "productName": "Taskana",
-  "version": "1.10.2",
+  "version": "1.10.3",
   "description": "Application wrapper for Asana web application",
   "keywords": [
     "macOS",
@@ -51,13 +51,13 @@
     "electron-packager": "15.1.0"
   },
   "build": {
-    "appId": "com.kreativgebiet.${name}",
+    "appId": "com.mountainash.${name}",
     "copyright": "MIT",
     "productName": "Taskana",
     "publish": [
       {
         "provider": "github",
-        "owner": "kreativgebiet",
+        "owner": "mountainash",
         "repo": "taskana"
       }
     ],
