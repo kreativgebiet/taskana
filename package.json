@@ -36,7 +36,7 @@
     "build": "electron-builder",
     "build:dir": "electron-builder --mac --dir",
 	"pack": "electron-packager . --overwrite",
-	"publish": "EP_DRAFT=true electron-builder build"
+	"release": "electron-builder build --publish always"
   },
   "dependencies": {
     "electron-config": "2.0.0",
