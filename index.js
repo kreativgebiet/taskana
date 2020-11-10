@@ -4,9 +4,10 @@ const __DEV__ = require('electron-is-dev');
 const log = require('electron-log');
 const path = require('path');
 const menu = require('./menu');
+const contextMenu = require('electron-context-menu');
 const fs = require('fs');
 const Config = require('electron-config')
-const config = new Config()
+const config = new Config();
 
 const notificationIndicator = '●';
 
@@ -46,6 +47,8 @@ function updateBadgeInfo(title) {
 }
 
 function createMainWindow() {
+	contextMenu();
+
 	let opts = {
 		title: app.getName(),
 		width: 1200,
@@ -56,7 +59,8 @@ function createMainWindow() {
 			nodeIntegration: false,
 			preload: path.join(__dirname, 'browser.js'),
 			plugins: true,
-			partition: 'persist:asana'
+			partition: 'persist:asana',
+			spellcheck: true
 		}
 	};
 	Object.assign(opts, config.get('winBounds'));
