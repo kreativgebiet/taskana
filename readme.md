@@ -4,15 +4,16 @@
 
 ![Taskana Tasks sample image](https://raw.githubusercontent.com/mountainash/taskana/develop/build/screenshot.png)
 
+See website for tips:
+- https://mountainash.github.io/taskana/
+
 ## Download
 
-https://github.com/mountainash/taskana/releases
+- https://github.com/mountainash/taskana/releases
 
 ## Development
 
 Clone the repository into a folder on your system and be sure to have Node.js installed.
-
-Run
 
 ```sh
 npm install
