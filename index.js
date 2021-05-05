@@ -1,7 +1,6 @@
 const { app, BrowserWindow, Menu, ipcMain, crashReporter, shell } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const __DEV__ = require('electron-is-dev');
-const log = require('electron-log');
 const path = require('path');
 const menu = require('./menu');
 const contextMenu = require('electron-context-menu');
@@ -14,9 +13,10 @@ const notificationIndicator = '●';
 require('electron-debug')();
 
 if (!__DEV__ && process.platform !== 'linux') {
+	const log = require('electron-log');
 	autoUpdater.logger = log;
 	autoUpdater.logger.transports.file.level = 'info';
-	autoUpdater.checkForUpdates();
+	autoUpdater.checkForUpdatesAndNotify();
 }
 
 let isQuitting = false;

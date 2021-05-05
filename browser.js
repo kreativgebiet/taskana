@@ -1,5 +1,4 @@
-const electron = require('electron');
-const { ipcRenderer } = electron;
+const { ipcRenderer } = require('electron');
 
 ipcRenderer.on('new-task', () => {
 	document.querySelector('.TopbarPageHeaderGlobalActions-omnibutton').click();
