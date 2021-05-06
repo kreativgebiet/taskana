@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, ipcMain, crashReporter, shell } = require('electron');
+const { app, BrowserWindow, Menu, shell, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const __DEV__ = require('electron-is-dev');
 const path = require('path');
@@ -8,6 +8,7 @@ const fs = require('fs');
 const Config = require('electron-config')
 const config = new Config();
 
+const BASE_URL = 'https://app.asana.com/';
 const notificationIndicator = '●';
 
 require('electron-debug')();
@@ -23,18 +24,22 @@ let isQuitting = false;
 let mainWindow;
 let page;
 
-const isRunning = app.requestSingleInstanceLock();
+function basicURL(url) {
+	if (typeof url !== 'string') return false;
 
-if (!isRunning) {
-	app.quit();
+	const parsed = new URL(url);
+	if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:')
+		return false;
+
+	return true;
 }
 
-app.on('second-instance', () => {
-	if (mainWindow) {
-		if (mainWindow.isMinimized()) mainWindow.restore();
-		mainWindow.show();
-	}
-});
+function isURLAllowed(url) {
+	return [
+		/^https:\/\/accounts\.google\.com\/.*/i,
+		/^https:\/\/app\.asana\.com\/.*/i
+	].some((re) => url.match(re));
+}
 
 function updateBadgeInfo(title) {
 	if (process.platform !== 'darwin' && process.platform !== 'linux') return;
@@ -67,7 +72,7 @@ function createMainWindow() {
 
 	const win = new BrowserWindow(opts);
 
-	win.loadURL('https://app.asana.com/');
+	win.loadURL(BASE_URL);
 
 	win.on('close', (e) => {
 		if (!isQuitting) {
@@ -92,6 +97,17 @@ function createMainWindow() {
 	return win;
 }
 
+if ( !app.requestSingleInstanceLock() ) {
+	app.quit();
+}
+
+app.on('second-instance', () => {
+	if (mainWindow) {
+		if (mainWindow.isMinimized()) mainWindow.restore();
+		mainWindow.show();
+	}
+});
+
 ipcMain.on('update-menu', () => {
 	Menu.setApplicationMenu(menu.slice(1));
 })
@@ -103,16 +119,49 @@ app.on('ready', () => {
 	page = mainWindow.webContents;
 
 	// Open new browser window on external open
-	page.on('new-window', (event, url) => {
-		event.preventDefault();
-		shell.openExternal(url);
+	page.setWindowOpenHandler(({ url }) => {
+		if ( basicURL(url) )
+			shell.openExternal(url);
+
+		return { action: 'deny' }; // prevent a new Electron window
+	});
+
+	page.on('will-navigate', (e, url) => {
+		if (basicURL(url) && !isURLAllowed(url)) {
+			e.preventDefault();
+			shell.openExternal(url);
+		}
+	});
+
+	page.on('will-redirect', (e, url) => {
+		// `will-navigate` doesn't catch redirects
+		if (basicURL(url) && !isURLAllowed(url)) {
+			e.preventDefault();
+			mainWindow.loadURL(BASE_URL);
+			shell.openExternal(url);
+		}
 	});
 
 	// Set the menu application menu
 	Menu.setApplicationMenu(menu);
 
-	page.on('dom-ready', function() {
+	// Insert CSS
+	page.on('dom-ready', () => {
 		page.insertCSS(fs.readFileSync(path.join(__dirname, 'browser.css'), 'utf8'));
 		mainWindow.show();
 	});
+});
+
+// Quit when all windows are closed, except on macOS. There, it's common for applications and their menu bar to stay active until the user quits explicitly with Cmd + Q
+app.on('window-all-closed', () => {
+	if (process.platform !== 'darwin') {
+		app.quit();
+	}
+});
+
+// On OS X it's common to re-create a window in the app when the dock icon is clicked and there are no other windows open
+app.on('activate', () => {
+	if (BrowserWindow.getAllWindows().length === 0) {
+		createMainWindow();
+	}
 });
