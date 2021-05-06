@@ -6,7 +6,7 @@ module.exports = {
 	label: appName,
 	submenu: [{
 		label: `About ${appName}`,
-		selector: 'orderFrontStandardAboutPanel:',
+		selector: 'orderFrontStandardAboutPanel:'
 	}, {
 		label: 'Services',
 		role: 'services',
@@ -29,6 +29,6 @@ module.exports = {
 	}, {
 		label: `Quit ${appName}`,
 		accelerator: 'Cmd+Q',
-		click: () => app.quit(),
+		click: () => app.quit()
 	}]
 };
