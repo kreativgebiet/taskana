@@ -9,6 +9,16 @@ ipcRenderer.on('new-task', () => {
 	}, 15);
 });
 
+ipcRenderer.on('show-preferences', () => {
+	document.querySelector('.TopbarPageHeaderGlobalActions-settingsMenuButton').click();
+
+	setTimeout(function() {
+		const menuitems = document.querySelectorAll('.StaticMenuItemBase-button')
+		const settingsitem = menuitems[menuitems.length - 2]; // Currently in the 2nd last position
+		settingsitem.click();
+	}, 15)
+});
+
 document.addEventListener('readystatechange', async () => {
 	const DomHooks = {
 		'loginform': '.LoginEmailPasswordForm',
