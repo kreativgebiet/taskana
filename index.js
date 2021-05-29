@@ -37,7 +37,8 @@ function basicURL(url) {
 function isURLAllowed(url) {
 	return [
 		/^https:\/\/accounts\.google\.com\/.*/i,
-		/^https:\/\/app\.asana\.com\/.*/i
+		/^https:\/\/app\.asana\.com\/.*/i,
+		/^https:\/\/asana-user-private-us-east-1\.s3\.amazonaws\.com\/.*/i,
 	].some((re) => url.match(re));
 }
 
