@@ -15,7 +15,7 @@ module.exports = {
 		},
 		{
 			label: 'Preferences',
-			accelerator: 'Cmd+;',
+			accelerator: 'Cmd+,',
 			click: () => sendAction('show-preferences'),
 		},
 		{
