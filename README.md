@@ -1,12 +1,12 @@
 # Taskana
 
-> There is now an (official Asana for Desktop app)[https://forum.asana.com/t/asana-for-desktop-now-available-for-early-access/120008] available for MacOS and Windows
+> There is now an official Asana for Desktop app available for MacOS & Windows
 
-The new official version also runs inside Election. Some of the difference are:
+The new [official version](https://forum.asana.com/t/asana-for-desktop-now-available-for-early-access/120008) also runs inside Election. Some of the difference are:
 - Taskana handles file downloads better
 - Asana for Desktop has Native OS notifications
 - Asana for Desktop has a Windows executable
-- Asana for Desktop uses "In-browser authentication" (you need to bounce between the app and your default browser) - Taskana logs you in directly
+- Asana for Desktop uses "In-browser authentication" every session (you need to bounce between the app and your default browser) - Taskana logs you in directly
 
 ![Taskana Tasks sample image](https://raw.githubusercontent.com/mountainash/taskana/develop/build/screenshot.png)
 
