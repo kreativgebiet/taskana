@@ -1,40 +1,70 @@
 {
   "name": "taskana",
   "productName": "Taskana",
-  "version": "1.6.2",
+  "version": "1.14.1",
   "description": "Application wrapper for Asana web application",
+  "keywords": [
+    "macOS",
+    "wrapper",
+    "electron",
+    "asana",
+    "tasks"
+  ],
   "author": "Nick Schmidt <nick@kreativgebiet.com>",
+  "contributors": [
+    {
+      "name": "Mountain/\\Ash"
+    },
+    {
+      "name": "Dominik Schmidt"
+    },
+    {
+      "name": "Jonas Schmitt"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mountainash/taskana.git"
+  },
+  "homepage": "https://github.com/mountainash/taskana",
+  "bugs": {
+    "url": "https://github.com/mountainash/taskana/issues"
+  },
+  "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "pack": "build --dir",
-    "release": "build"
+    "start:debug": "ELECTRON_DEBUG=true npm run start",
+    "build": "electron-builder",
+    "build:dir": "electron-builder --mac --dir",
+    "release": "electron-builder build --publish always"
   },
   "dependencies": {
-    "electron-debug": "^1.1.0",
-    "electron-is-dev": "^0.1.2",
-    "electron-log": "^2.2.6",
-    "electron-store": "^1.1.0",
-    "electron-updater": "^2.4.3"
+    "electron-config": "2.0.0",
+    "electron-context-menu": "3.1.0",
+    "electron-debug": "3.2.0",
+    "electron-is-dev": "2.0.0",
+    "electron-log": "4.3.5",
+    "electron-updater": "4.3.9",
+    "keytar": "7.7.0"
   },
   "devDependencies": {
-    "electron": "^1.6.11",
-    "electron-builder": "^19.5.1",
-    "electron-packager": "^8.7.1"
+    "electron": "13.0.1",
+    "electron-builder": "22.11.5",
+    "electron-packager": "15.2.0"
   },
   "build": {
-    "files": [
-      "**/*"
-    ],
-    "appId": "com.kreativgebiet.taskana",
+    "appId": "com.mountainash.${name}",
+    "copyright": "MIT",
+    "productName": "Taskana",
     "publish": [
       {
         "provider": "github",
-        "owner": "kreativgebiet",
+        "owner": "mountainash",
         "repo": "taskana"
       }
     ],
     "mac": {
-      "category": "public.app-category.social-networking",
+      "category": "public.app-category.productivity",
       "target": [
         "dmg",
         "zip"
