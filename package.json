@@ -48,7 +48,7 @@
     "keytar": "7.7.0"
   },
   "devDependencies": {
-    "electron": "13.5.1",
+    "electron": "15.1.1",
     "electron-builder": "22.11.7"
   },
   "build": {
