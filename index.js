@@ -1,24 +1,14 @@
 const { app, BrowserWindow, Menu, shell, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
-const __DEV__ = require('electron-is-dev');
 const path = require('path');
 const menu = require('./menu');
 const contextMenu = require('electron-context-menu');
 const fs = require('fs');
-const Config = require('electron-config')
-const config = new Config();
+const Store = require('electron-store')
+const config = new Store();
 
 const BASE_URL = 'https://app.asana.com/';
 const notificationIndicator = '●';
-
-require('electron-debug')();
-
-if (!__DEV__ && process.platform !== 'linux') {
-	const log = require('electron-log');
-	autoUpdater.logger = log;
-	autoUpdater.logger.transports.file.level = 'info';
-	autoUpdater.checkForUpdatesAndNotify();
-}
 
 let isQuitting = false;
 let mainWindow;
@@ -39,6 +29,7 @@ function isURLAllowed(url) {
 		/^https:\/\/accounts\.google\.com\/.*/i,
 		/^https:\/\/app\.asana\.com\/.*/i,
 		/^https:\/\/asana-user-private-us-east-1\.s3\.amazonaws\.com\/.*/i,
+		/^https:\/\/.*\.doubleclick.net\/.*/i,
 	].some((re) => url.match(re));
 }
 
@@ -118,6 +109,8 @@ app.on('before-quit', () => isQuitting = true);
 app.on('ready', () => {
 	mainWindow = createMainWindow();
 	page = mainWindow.webContents;
+
+	autoUpdater.checkForUpdatesAndNotify();
 
 	// Open new browser window on external open
 	page.setWindowOpenHandler(({ url }) => {
