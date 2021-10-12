@@ -2,7 +2,7 @@ const { ipcRenderer } = require('electron');
 const keyStore = require('./src/keystore');
 
 ipcRenderer.on('new-task', () => {
-	document.querySelector('.TopbarPageHeaderGlobalActions-omnibutton').click();
+	document.querySelector('.TopbarPageHeaderGlobalActions-omnibuttonWithoutQuestionMenu').click();
 
 	setTimeout(function() {
 		document.querySelector('.Omnibutton-addTask').click();
