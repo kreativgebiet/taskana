@@ -14,7 +14,7 @@ ipcRenderer.on('show-preferences', () => {
 
 	setTimeout(function() {
 		const menuitems = document.querySelectorAll('.StaticMenuItemBase-button')
-		const settingsitem = menuitems[menuitems.length - 2]; // Currently in the 2nd last position
+		const settingsitem = menuitems[menuitems.length - 3]; // Currently in the 2nd last position
 		settingsitem.click();
 	}, 15)
 });
