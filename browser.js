@@ -2,7 +2,7 @@ const { ipcRenderer } = require('electron');
 const keyStore = require('./src/keystore');
 
 ipcRenderer.on('new-task', () => {
-	document.querySelector('.TopbarPageHeaderGlobalActions-omnibutton').click();
+	document.querySelector('.TopbarPageHeaderGlobalActions-omnibuttonWithoutQuestionMenu').click();
 
 	setTimeout(function() {
 		document.querySelector('.Omnibutton-addTask').click();
@@ -14,7 +14,7 @@ ipcRenderer.on('show-preferences', () => {
 
 	setTimeout(function() {
 		const menuitems = document.querySelectorAll('.StaticMenuItemBase-button')
-		const settingsitem = menuitems[menuitems.length - 2]; // Currently in the 2nd last position
+		const settingsitem = menuitems[menuitems.length - 3]; // Currently in the 2nd last position
 		settingsitem.click();
 	}, 15)
 });
