@@ -1,7 +1,7 @@
 {
   "name": "taskana",
   "productName": "Taskana",
-  "version": "1.14.6",
+  "version": "1.14.7",
   "description": "Application wrapper for Asana web application",
   "keywords": [
     "macOS",
@@ -41,12 +41,12 @@
   "dependencies": {
     "electron-store": "8.0.1",
     "electron-context-menu": "3.1.1",
-    "electron-updater": "4.3.9",
+    "electron-updater": "4.6.1",
     "keytar": "7.7.0"
   },
   "devDependencies": {
-    "electron": "15.1.2",
-    "electron-builder": "22.13.1"
+    "electron": "16.0.1",
+    "electron-builder": "22.14.5"
   },
   "build": {
     "appId": "com.mountainash.${name}",
@@ -63,10 +63,13 @@
     ],
     "mac": {
       "category": "public.app-category.productivity",
-      "target": [
-        "dmg",
-        "zip"
-      ]
+      "target": {
+        "target": "default",
+        "arch": [
+          "x64",
+          "arm64"
+        ]
+      }
     },
     "dmg": {
       "iconSize": 160,
