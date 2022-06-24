@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "electron-store": "8.0.1",
-    "electron-context-menu": "3.1.1",
+    "electron-context-menu": "3.3.0",
     "electron-updater": "4.6.1",
     "keytar": "7.7.0"
   },
