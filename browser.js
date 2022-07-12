@@ -2,11 +2,12 @@ const { ipcRenderer } = require('electron');
 const keyStore = require('./src/keystore');
 
 ipcRenderer.on('new-task', () => {
+	document.querySelector('.TopbarPageHeaderGlobalActions-omnibuttonWithoutQuestionMenu').focus();
 	document.querySelector('.TopbarPageHeaderGlobalActions-omnibuttonWithoutQuestionMenu').click();
 
 	setTimeout(function() {
-		document.querySelector('.Omnibutton-addTask').click();
-	}, 15);
+		document.querySelector('.DropdownMenuButton-menu a:first-child').focus();
+	}, 150);
 });
 
 ipcRenderer.on('show-preferences', () => {
