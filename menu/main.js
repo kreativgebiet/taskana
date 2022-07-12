@@ -15,7 +15,7 @@ module.exports = {
 		},
 		{
 			label: 'Preferences',
-			accelerator: 'Cmd+,',
+			accelerator: 'CommandOrControl+,',
 			click: () => sendAction('show-preferences'),
 		},
 		{
@@ -31,12 +31,12 @@ module.exports = {
 		},
 		{
 			label: `Hide ${appName}`,
-			accelerator: 'Cmd+H',
+			accelerator: 'CommandOrControl+H',
 			role: 'hide',
 		},
 		{
 			label: 'Hide Others',
-			accelerator: 'Cmd+Option+H',
+			accelerator: 'CommandOrControl+Alt+H',
 			role: 'hideothers',
 		},
 		{
@@ -48,7 +48,7 @@ module.exports = {
 		},
 		{
 			label: `Quit ${appName}`,
-			accelerator: 'Cmd+Q',
+			accelerator: 'CommandOrControl+Q',
 			click: () => app.quit(),
 		},
 	],
