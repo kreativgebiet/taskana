@@ -41,7 +41,7 @@
   "dependencies": {
     "electron-context-menu": "3.3.0",
     "electron-store": "8.0.2",
-    "electron-updater": "4.6.1",
+    "electron-updater": "4.6.5",
     "keytar": "7.9.0"
   },
   "devDependencies": {
