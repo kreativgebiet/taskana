@@ -4,7 +4,7 @@ module.exports = {
 	label: 'Tasks',
 	submenu: [{
 		label: 'New Task',
-		accelerator: 'Command+N',
+		accelerator: 'CommandOrControl+N',
 		click: () => sendAction('new-task')
 	}]
 };
