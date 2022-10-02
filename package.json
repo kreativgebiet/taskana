@@ -1,7 +1,7 @@
 {
   "name": "taskana",
   "productName": "Taskana",
-  "version": "1.14.9",
+  "version": "1.14.10",
   "description": "Application wrapper for Asana web application",
   "keywords": [
     "macOS",
@@ -45,7 +45,7 @@
     "keytar": "7.9.0"
   },
   "devDependencies": {
-    "electron": "19.0.9",
+    "electron": "^21.0.1",
     "electron-builder": "23.1.0"
   },
   "build": {
