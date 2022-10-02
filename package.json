@@ -39,7 +39,7 @@
     "release": "electron-builder build --publish always"
   },
   "dependencies": {
-    "electron-context-menu": "3.3.0",
+    "electron-context-menu": "3.5.0",
     "electron-store": "8.0.2",
     "electron-updater": "5.2.1",
     "keytar": "7.9.0"
