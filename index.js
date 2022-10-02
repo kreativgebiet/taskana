@@ -54,6 +54,7 @@ function createMainWindow() {
 		acceptFirstMouse: true,
 		webPreferences: {
 			nodeIntegration: false,
+			sandbox: false, // needed to allow "require" in preload script - as per https://github.com/electron/electron/issues/35587#issuecomment-1238940105
 			preload: path.join(__dirname, 'browser.js'),
 			plugins: true,
 			partition: 'persist:asana',
