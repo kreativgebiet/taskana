@@ -12,11 +12,11 @@ The new [official version](https://forum.asana.com/t/asana-for-desktop-now-avail
 ![Taskana Tasks sample image](https://raw.githubusercontent.com/mountainash/taskana/develop/build/screenshot.png)
 
 See website for tips:
-- https://mountainash.github.io/taskana/
+- <https://mountainash.github.io/taskana/>
 
 ## Download
 
-- https://github.com/mountainash/taskana/releases
+- <https://github.com/mountainash/taskana/releases>
 
 ## Development
 
@@ -50,4 +50,4 @@ MIT
 
 ## Credits
 
-Originally forked from https://github.com/kreativgebiet/taskana (now archived)
+Originally forked from <https://github.com/kreativgebiet/taskana> (now archived)

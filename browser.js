@@ -6,7 +6,7 @@ ipcRenderer.on('new-task', () => {
 	document.querySelector('.TopbarPageHeaderGlobalActions-omnibuttonWithoutQuestionMenu').click();
 
 	setTimeout(function() {
-		document.querySelector('.DropdownMenuButton-menu a:first-child').focus();
+		document.querySelector('.ActionMenu .MenuItemA11y:first-child').focus();
 	}, 150);
 });
 
@@ -14,8 +14,8 @@ ipcRenderer.on('show-preferences', () => {
 	document.querySelector('.TopbarPageHeaderGlobalActions-settingsMenuButton').click();
 
 	setTimeout(function() {
-		const menuitems = document.querySelectorAll('.StaticMenuItemBase-button')
-		const settingsitem = menuitems[menuitems.length - 3]; // Currently in the 2nd last position
+		const menuitems = document.querySelectorAll('.ActionMenu .MenuItemA11y');
+		const settingsitem = menuitems[menuitems.length - 2]; // Currently in the 3nd last position
 		settingsitem.click();
 	}, 15)
 });
