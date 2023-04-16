@@ -54,11 +54,11 @@ function createMainWindow() {
 		acceptFirstMouse: true,
 		webPreferences: {
 			nodeIntegration: false,
+			contextIsolation: true,
 			sandbox: false, // needed to allow "require" in preload script - as per https://github.com/electron/electron/issues/35587#issuecomment-1238940105
-			preload: path.join(__dirname, 'browser.js'),
-			plugins: true,
+			preload: path.resolve(app.getAppPath(), 'browser.js'),
 			partition: 'persist:asana',
-			spellcheck: true
+			spellcheck: true,
 		}
 	};
 	Object.assign(opts, config.get('winBounds'));
