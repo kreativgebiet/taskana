@@ -2,22 +2,13 @@ const { ipcRenderer } = require('electron');
 const keyStore = require('./src/keystore');
 
 ipcRenderer.on('new-task', () => {
-	document.querySelector('.TopbarPageHeaderGlobalActions-omnibuttonWithoutQuestionMenu').focus();
-	document.querySelector('.TopbarPageHeaderGlobalActions-omnibuttonWithoutQuestionMenu').click();
-
-	setTimeout(function() {
-		document.querySelector('.ActionMenu .MenuItemA11y:first-child').focus();
-	}, 150);
+	document.querySelector('.Omnibutton').click();
+	document.querySelector('.Omnibutton-task').click();
 });
 
 ipcRenderer.on('show-preferences', () => {
-	document.querySelector('.TopbarPageHeaderGlobalActions-settingsMenuButton').click();
-
-	setTimeout(function() {
-		const menuitems = document.querySelectorAll('.ActionMenu .MenuItemA11y');
-		const settingsitem = menuitems[menuitems.length - 2]; // Currently in the 3nd last position
-		settingsitem.click();
-	}, 15)
+	document.querySelector('.TopbarSettingsMenuButton').click();
+	document.querySelector('.TopbarSettingsMenu-settings').click();
 });
 
 document.addEventListener('readystatechange', async () => {
