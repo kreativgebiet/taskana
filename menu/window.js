@@ -1,4 +1,3 @@
-
 const { BrowserWindow } = require('electron');
 
 module.exports = {
@@ -6,11 +5,11 @@ module.exports = {
 	role: 'window',
 	submenu: [{
 		label: 'Minimize',
-		accelerator: 'CmdOrCtrl+M',
+		accelerator: 'CommandOrControl+M',
 		role: 'minimize'
 	}, {
 		label: 'Close',
-		accelerator: 'CmdOrCtrl+W',
+		accelerator: 'CommandOrControl+W',
 		role: 'close'
 	}, {
 		type: 'separator'

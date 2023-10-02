@@ -1,108 +1,67 @@
-
-const electron = require('electron');
-const config = require('./config');
-const settingsMenuSelector = '.Topbar-settingsMenuButton';
-
-// Host.prototype.ufuThatExceptionHandlerActive = function() {};
-
-const { ipcRenderer } = electron;
-
-function openSidebar() {
-	document.querySelector('.Topbar-navButton').click();
-}
-
-function closeSidebar() {
-	document.querySelector('.SidebarHeader-closeIcon').click();
-}
-
-ipcRenderer.on('toggle-vibrancy', () => {
-	console.log('toggle-vibrancy');
-	config.set('vibrancy', !config.get('vibrancy'));
-	updateVibrancy();
-});
-
-ipcRenderer.on('show-account-settings', () => {
-	document.querySelector(settingsMenuSelector).click();
-	var aTags = querySelectorAll('.menuItem-button');
-
-	// Hack to find profile settings
-	for (var i = 0; i < aTags.length; i++) {
-		if (aTags[i].firstChild.textContent == 'My Profile Settings...') {
-			click(aTags[i]);
-			break;
-		}
-	}
-});
-
-ipcRenderer.on('show-workspace-settings', () => {
-	document.querySelector('.Topbar-settingsMenuButton').click();
-	document.querySelector('.topbarSettingsMenu-domainSettings').click();
-});
+const { ipcRenderer } = require('electron');
+const keyStore = require('./src/keystore');
 
 ipcRenderer.on('new-task', () => {
-	document.querySelector('.GridHeader-addTaskButton').click();
+	document.querySelector('.Omnibutton').click();
+	document.querySelector('.Omnibutton-task').click();
 });
 
-ipcRenderer.on('new-section', () => {
-	document.querySelector('.GridHeader-addSectionButton').click();
+ipcRenderer.on('show-preferences', () => {
+	document.querySelector('.TopbarSettingsMenuButton').click();
+	document.querySelector('.TopbarSettingsMenu-settings').click();
 });
 
-ipcRenderer.on('new-project', () => {
-	openSidebar();
-	document.querySelector('.omnibutton-addProject').click();
+document.addEventListener('readystatechange', async () => {
+	const DomHooks = {
+		'loginform': '.LoginEmailPasswordForm',
+		'loginusername': 'input[name=e]',
+		'loginpassword': 'input[name=p]',
+		'loginbutton': '[role=button]'
+	};
+
+	if (document.location.pathname.endsWith('/login')) {
+		const loginform = document.querySelector(DomHooks.loginform);
+		const loginusername = loginform.querySelector(DomHooks.loginusername);
+		const loginpassword = loginform.querySelector(DomHooks.loginpassword);
+
+		// try using saved login
+		const loginkeys = await keyStore.getKey();
+
+		// Trigger the attached `change` event to get the values into the Virtual DOM (as Asana runs React/Nuxt.js)
+		const event = new Event('HTMLEvents');
+		event.initEvent('change', true, false);
+
+		if (loginkeys && loginkeys.username) {
+			loginusername.value = loginkeys.username;
+			loginusername.dispatchEvent(event);
+		}
+
+		if (loginkeys && loginkeys.password) {
+			loginpassword.value = loginkeys.password;
+			loginpassword.dispatchEvent(event);
+		}
+
+		const loginsubmitted = async function() {
+			let username = loginusername.value;
+			let password = loginpassword.value;
+
+			if (username && password) {
+				await keyStore.deleteKeys(); // delete any exiting logins
+				await keyStore.addKey(username, password); // store the users details for auto-login next time
+			}
+		};
+
+		// add a listener to the form to capture login details and store them
+		// would be nice to add to just the <FORM> submit event, but React/Nuxt (used by Asana) captures the events lower in the DOM
+		// loginform.addEventListener('submit', loginsubmitted);
+		loginform.querySelector(DomHooks.loginbutton).addEventListener('click', loginsubmitted);
+		loginusername.addEventListener('keyup', (e) => {
+			if (e.code == 'Enter')
+				loginsubmitted()
+		});
+		loginpassword.addEventListener('keyup', (e) => {
+			if (e.code == 'Enter')
+				loginsubmitted()
+		});
+	}
 });
-
-// Team
-
-ipcRenderer.on('new-team-task', () => {
-	document.querySelector('.omnibutton-button').click();
-	document.querySelector('.omnibutton-addTask').click();
-});
-
-ipcRenderer.on('new-team-conversation', () => {
-	document.querySelector('.omnibutton-button').click();
-	document.querySelector('.omnibutton-addConversation').click();
-});
-
-ipcRenderer.on('new-team-project', () => {
-	document.querySelector('.omnibutton-button').click();
-	document.querySelector('.omnibutton-addProject').click();
-});
-
-ipcRenderer.on('team-conversations', () => {
-	openSidebar();
-	document.querySelector('[title="Team Conversations"]').click();
-	closeSidebar();
-});
-
-ipcRenderer.on('team-calendar', () => {
-	openSidebar();
-	document.querySelector('[title="Team Calendar"]').click();
-	closeSidebar();
-});
-
-ipcRenderer.on('team-show', () => {
-	document.querySelector('.SidebarTeamMembersList-addButton').click();
-	document.querySelector('.SidebarTeamMembersExpandedList-pencilButton').click();
-});
-
-ipcRenderer.on('my-dashboard', () => {
-	document.querySelector('.Topbar-myDashboardButton').click();
-});
-
-ipcRenderer.on('my-tasks', () => {
-	document.querySelector('.Topbar-myTasksButton').click();
-});
-
-ipcRenderer.on('my-inbox', () => {
-	document.querySelector('.Topbar-notificationsButton').click();
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-	updateVibrancy();
-});
-
-function updateVibrancy() {
-	document.documentElement.classList.toggle('vibrancy', config.get('vibrancy'));
-	ipcRenderer.send('set-vibrancy');
-}
