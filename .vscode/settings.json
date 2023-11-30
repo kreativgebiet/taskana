@@ -1,0 +1,30 @@
+{
+	"javascript.validate.enable": true,
+	"workbench.colorCustomizations": {
+		"activityBar.background": "#F75F80",
+		"activityBar.activeBackground": "#6349A0",
+		"activityBar.activeBorder": "#6349A0",
+		"activityBar.foreground": "#FFF",
+		"activityBar.inactiveForeground": "#D1B5D7",
+		"activityBarBadge.background": "#6349A0",
+		"activityBarBadge.foreground": "#FFF",
+		"titleBar.activeBackground": "#F75F80",
+		"titleBar.inactiveBackground": "#636674",
+		"titleBar.border": "#586573",
+		"titleBar.activeForeground": "#FFF",
+		"titleBar.inactiveForeground": "#D1B5D7",
+		"statusBar.background": "#F75F80",
+		"statusBarItem.hoverBackground": "#6349A0",
+		"statusBar.foreground": "#FFF",
+		"statusBar.border": "#586573"
+	},
+    "cSpell.words": [
+		"Asana",
+		"Dominik",
+		"doubleclick",
+		"keystorename",
+		"keytar",
+		"Schmitt",
+		"Taskana"
+	]
+}

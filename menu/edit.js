@@ -1,31 +1,30 @@
-
 module.exports = {
 	label: 'Edit',
 	submenu: [{
 		label: 'Undo',
-		accelerator: 'CmdOrCtrl+Z',
+		accelerator: 'CommandOrControl+Z',
 		role: 'undo'
 	}, {
 		label: 'Redo',
-		accelerator: 'Shift+CmdOrCtrl+Z',
+		accelerator: 'Shift+CommandOrControl+Z',
 		role: 'redo'
 	}, {
 		type: 'separator'
 	}, {
 		label: 'Cut',
-		accelerator: 'CmdOrCtrl+X',
+		accelerator: 'CommandOrControl+X',
 		role: 'cut'
 	}, {
 		label: 'Copy',
-		accelerator: 'CmdOrCtrl+C',
+		accelerator: 'CommandOrControl+C',
 		role: 'copy'
 	}, {
 		label: 'Paste',
-		accelerator: 'CmdOrCtrl+V',
+		accelerator: 'CommandOrControl+V',
 		role: 'paste'
 	}, {
 		label: 'Select All',
-		accelerator: 'CmdOrCtrl+A',
+		accelerator: 'CommandOrControl+A',
 		role: 'selectall'
 	}]
 }
